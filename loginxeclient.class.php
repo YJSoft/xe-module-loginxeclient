@@ -51,7 +51,7 @@ class loginxeclient extends ModuleObject
     }
 	  if($oDB->isColumnExists("loginxeclient_member", "is_loginxeonly"))
 	  {
-
+		  $oDB->dropColumn("loginxeclient_member", "is_loginxeonly");
 	  }
 
     return new Object(0, 'success_updated');
