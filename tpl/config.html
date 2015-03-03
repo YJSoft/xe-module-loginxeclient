@@ -1,0 +1,61 @@
+<!--// HEADER -->
+<include target="./_header.html" />
+<!--// BODY -->
+<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/loginxeserver/tpl/config/1'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<section class="section">
+	<h1>
+		{$lang->cmd_naverlogin_config}
+		<a href="#descConfig" class="x_icon-question-sign" data-toggle="#descConfig">{$lang->help}</a>
+	</h1>
+	<p id="descConfig" class="x_alert x_alert-warn">{$lang->about_naverlogin_config}</p>
+	<form method="post" class="x_form-horizontal" action="./">
+		<input type="hidden" name="module" value="loginxeclient">
+		<input type="hidden" name="act" value="procLoginxeclientAdminInsertConfig">
+		<input type="hidden" name="xe_validator_id" value="modules/loginxeclient/tpl/config/1" />
+
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->loginxe_server}</div>
+			<div class="x_controls">
+				<div class="x_input">
+					<input type="text" step="any" value="{$module_config->loginxe_server}" name="loginxe_server" size="7">
+				</div>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->loginxe_service}</div>
+			<div class="x_controls">
+				<label class="x_inline"><input type="checkbox" name="loginxe_provider[]" value="naver" checked="checked"|cond="@in_array('naver', $module_config->loginxe_provider)" class="checkbox" /> {$lang->loginxe_naver_provider}</label>
+				<label class="x_inline"><input type="checkbox" name="loginxe_provider[]" value="github" checked="checked"|cond="@in_array('github', $module_config->loginxe_provider)" class="checkbox" /> {$lang->loginxe_github_provider}</label>
+				<!-- label class="x_inline"><input type="checkbox" name="loginxe_provider" value="xe" id="xe" checked="checked"|cond="@in_array('xe', $module_config->loginxe_provider)" class="checkbox" /> {$lang->loginxe_xe_provider}</label -->
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->loginxe_id}</div>
+			<div class="x_controls">
+				<div class="x_input">
+					<input type="text" step="any" value="{$module_config->loginxe_id}" name="loginxe_id" size="7">
+				</div>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->loginxe_key}</div>
+			<div class="x_controls">
+				<div class="x_input">
+					<input type="text" step="any" value="{$module_config->loginxe_key}" name="loginxe_key" size="7">
+				</div>
+			</div>
+		</div>
+
+		<div class="x_clearfix btnArea">
+			<div class="x_pull-right">
+				<button class="x_btn x_btn-primary" type="submit">{$lang->cmd_registration}</button>
+			</div>
+		</div>
+	</form>
+</section>
+
+<!--// FOOTER -->
+<include target="./_footer.html" />

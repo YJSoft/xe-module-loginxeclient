@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+	<title xml:lang="en">LoginXE Client</title>
+	<title xml:lang="ko">LoginXE 클라이언트</title>
+	<description xml:lang="en">LoginXE Client Module</description>
+	<description xml:lang="ko">LoginXE 클라이언트 모듈</description>
+	<version>1.04</version>
+	<date>2015-03-03</date>
+	<author email_address="yjsoft@yjsoft.pe.kr" link="http://yjsoft.pe.kr/">
+		<name xml:lang="en">YJSoft</name>
+		<name xml:lang="ko">YJSoft</name>
+	</author>
+</module>

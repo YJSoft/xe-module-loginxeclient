@@ -1,0 +1,12 @@
+<query id="getLoginxeclientMemberbySrl" action="select">
+    <tables>
+        <table name="loginxeclient_member" />
+    </tables>
+    <columns>
+        <column name="enc_id" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="srl" var="srl" notnull="notnull" />
+        <condition operation="equal" column="type" var="type" notnull="notnull" pipe="and" />
+    </conditions>
+</query>

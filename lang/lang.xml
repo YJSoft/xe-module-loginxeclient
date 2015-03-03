@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="loginxeclient">
+		<value xml:lang="en"><![CDATA[LoginXE Client]]></value>
+	</item>
+	<item name="about_loginxeclient">
+		<value xml:lang="en"><![CDATA[LoginXE Client Module]]></value>
+		<value xml:lang="ko"><![CDATA[로그인 XE 클라이언트 모듈]]></value>
+	</item>
+    <item name="cmd_naverlogin_config">
+        <value xml:lang="en"><![CDATA[API Setting]]></value>
+        <value xml:lang="ko"><![CDATA[API 설정]]></value>
+    </item>
+    <item name="loginxe_server">
+        <value xml:lang="en"><![CDATA[LoginXE Server URL]]></value>
+        <value xml:lang="ko"><![CDATA[로그인XE 서버 주소]]></value>
+    </item>
+    <item name="loginxe_naver_provider">
+        <value xml:lang="en"><![CDATA[Naver]]></value>
+        <value xml:lang="ko"><![CDATA[네이버]]></value>
+    </item>
+    <item name="loginxe_github_provider">
+        <value xml:lang="en"><![CDATA[Github]]></value>
+        <value xml:lang="ko"><![CDATA[깃허브]]></value>
+    </item>
+    <item name="loginxe_unknown_provider">
+        <value xml:lang="en"><![CDATA[Unknown Provider]]></value>
+        <value xml:lang="ko"><![CDATA[알 수 없는 제공자]]></value>
+    </item>
+    <item name="loginxe_xe_provider">
+        <value xml:lang="en"><![CDATA[XE]]></value>
+        <value xml:lang="ko"><![CDATA[XE]]></value>
+    </item>
+    <item name="loginxe_service">
+        <value xml:lang="en"><![CDATA[LoginXE Login Service Provider]]></value>
+        <value xml:lang="ko"><![CDATA[로그인XE 로그인 서비스 제공자]]></value>
+    </item>
+    <item name="loginxe_id">
+        <value xml:lang="en"><![CDATA[LoginXE Server ID]]></value>
+        <value xml:lang="ko"><![CDATA[로그인XE 서버 아이디]]></value>
+    </item>
+    <item name="loginxe_key">
+        <value xml:lang="en"><![CDATA[LoginXE Server Key]]></value>
+        <value xml:lang="ko"><![CDATA[로그인XE 서버 키]]></value>
+    </item>
+    <item name="loginxecli_need_openssl">
+        <value xml:lang="en"><![CDATA[Need openssl support.]]></value>
+        <value xml:lang="ko"><![CDATA[OpenSSL 지원이 필요합니다.]]></value>
+    </item>
+    <item name="loginxecli_already_registered">
+        <value xml:lang="en"><![CDATA[Already connected service.]]></value>
+        <value xml:lang="ko"><![CDATA[이미 해당 서비스와 연동이 되어있는 계정입니다.]]></value>
+    </item>
+    <item name="loginxecli_linksuccess">
+        <value xml:lang="en"><![CDATA[Succussfully connected.]]></value>
+        <value xml:lang="ko"><![CDATA[성공적으로 연결하였습니다.]]></value>
+    </item>
+    <item name="loginxecli_no_email_public">
+        <value xml:lang="en"><![CDATA[No public email address available. please set public email address at your github account.]]></value>
+        <value xml:lang="ko"><![CDATA[사용 가능한 이메일 주소가 없습니다. Github 계정 설정에서 Public email을 설정해 주셔야 합니다.]]></value>
+    </item>
+    <item name="loginxecli_disconnected">
+        <value xml:lang="en"><![CDATA[Account disconnected.]]></value>
+        <value xml:lang="ko"><![CDATA[연동이 해제되었습니다.]]></value>
+    </item>
+    <item name="loginxecli_duplicate_email">
+        <value xml:lang="en"><![CDATA[Duplicate Email address. try login with email and connect account.]]></value>
+        <value xml:lang="ko"><![CDATA[중복된 이메일 주소입니다. 해당 계정으로 로그인뒤 연동을 시도해 보세요.]]></value>
+    </item>
+    <item name="loginxecli_not_enabled_provider">
+        <value xml:lang="en"><![CDATA[%s is not enabled provider. please contact administrator.]]></value>
+        <value xml:lang="ko"><![CDATA[%s는 활성화 되어 있지 않은 로그인 서비스 제공자입니다. 관리자에게 문의해 주세요.]]></value>
+    </item>
+    <item name="loginxecli_not_supported_provider">
+        <value xml:lang="en"><![CDATA[%s is not supported provider. please contact administrator.]]></value>
+        <value xml:lang="ko"><![CDATA[%s는 이 버전의 클라이언트 모듈에서 지원하지 않는 로그인 서비스 제공자입니다. 관리자에게 문의해 주세요.]]></value>
+    </item>
+</lang>

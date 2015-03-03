@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="{$memberskin}/css/member.css" />
+<script src="{$memberskin}/js/member.js"></script>
+
+<section class="xm">
+	<ul class="nav nav-tabs" cond="$is_logged && $logged_info->menu_list">
+		<li loop="$logged_info->menu_list=>$key,$val" class="active"|cond="$key==$act">
+			<a href="{getUrl('', 'act',$key, 'mid', $mid, 'vid', $vid)}">{Context::getLang($val)}</a>
+		</li>
+	</ul>
+	<h1>로그인XE 제공자 설정</h1>
+	<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/loginxe/tpl/listprovider/1'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+		<p>{$XE_VALIDATOR_MESSAGE}</p>
+	</div>
+	<dl class="dl-horizontal">
+		<block loop="$providers => $item">
+			<dt>{$item->title}</dt>
+			<dd cond="$item->connected"><a href="{getUrl('','module','loginxeclient','act','dispLoginxeclientRevokeProvider','provider',$item->id)}">연결됨</a></dd>
+			<dd cond="!$item->connected"><a href="{getUrl('','module','loginxeclient','act','dispLoginxeclientOAuth','provider',$item->id)}">연결 안됨</a></dd>
+		</block>
+	</dl>
+	<!-- div class="btnArea btn-group" cond="$memberInfo['member_srl'] == $logged_info->member_srl">
+		<a href="{getUrl('act', 'dispMemberModifyEmailAddress')}" class="btn" cond="$member_config->identifier == 'email_address'">{$lang->cmd_modify_member_email_address}</a>
+		<a href="{getUrl('act','dispMemberModifyInfo','member_srl','')}" class="btn">{$lang->cmd_modify_member_info}</a>
+		<a href="{getUrl('act','dispMemberModifyPassword','member_srl','')}" class="btn">{$lang->cmd_modify_member_password}</a>
+		<a href="{getUrl('act','dispMemberLeave','member_srl','')}" class="btn">{$lang->cmd_leave}</a>
+	</div -->
+</section>

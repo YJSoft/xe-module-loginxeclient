@@ -1,0 +1,12 @@
+<query id="updateLoginxeclientMember" action="update">
+	<tables>
+		<table name="loginxeclient_member" />
+	</tables>
+	<columns>
+		<column name="is_loginxeonly" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="srl" var="srl" notnull="notnull" />
+		<condition operation="equal" column="type" var="type" notnull="notnull" pipe="and" />
+	</conditions>
+</query>

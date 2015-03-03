@@ -1,0 +1,10 @@
+<query id="insertLoginxeclientMember" action="insert">
+	<tables>
+		<table name="loginxeclient_member" />
+	</tables>
+	<columns>
+		<column name="srl" var="srl" notnull="notnull" />
+		<column name="enc_id" var="enc_id" notnull="notnull" />
+		<column name="type" var="type" notnull="notnull" />
+	</columns>
+</query>

@@ -1,0 +1,8 @@
+<query id="deleteLoginxeclientMember" action="delete">
+	<tables>
+		<table name="loginxeclient_member" />
+	</tables>
+	<conditions>
+		<condition operation="equal" column="srl" var="srl" notnull="notnull" />
+	</conditions>
+</query>
