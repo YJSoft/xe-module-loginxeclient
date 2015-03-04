@@ -38,11 +38,11 @@ class loginxeclientView extends loginxeclient
 		$logindata = new stdClass();
 		$logindata->naver = new stdClass();
 		$logindata->naver->id = 'naver';
-		$logindata->naver->title = '네이버';
+		$logindata->naver->title = Context::getLang('loginxe_naver_provider');
 		$logindata->naver->connected = false;
 		$logindata->github = new stdClass();
 		$logindata->github->id = 'github';
-		$logindata->github->title = '깃허브';
+		$logindata->github->title = Context::getLang('loginxe_github_provider');
 		$logindata->github->connected = false;
 
 		$cond = new stdClass();
@@ -76,7 +76,7 @@ class loginxeclientView extends loginxeclient
 		$config = $oMemberModel->getMemberConfig();
 		Context::set('member_config',$config);
 
-		$skin = $oMemberConfig->skin;
+		$skin = $config->skin;
 
 		if(!$skin)
 		{

@@ -21,7 +21,7 @@ class loginxeclientController extends loginxeclient
 		//$target_srl = Context::get('target_srl');
 
 		$oMemberController = getController('member');
-		$oMemberController->addMemberMenu('dispLoginxeclientListProvider', '로그인XE 제공자 연결');
+		$oMemberController->addMemberMenu('dispLoginxeclientListProvider', Context::getLang('loginxecli_membermenu'));
 
 		if($logged_info->is_admin== 'Y')
 		{

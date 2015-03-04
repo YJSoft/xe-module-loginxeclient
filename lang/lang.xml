@@ -103,4 +103,20 @@
         <value xml:lang="ko"><![CDATA[비밀번호 확인이 틀렸습니다.]]></value>
         <value xml:lang="en"><![CDATA[]]></value>
     </item>
+    <item name="loginxecli_membermenu">
+        <value xml:lang="ko"><![CDATA[외부 로그인 연결]]></value>
+        <value xml:lang="en"><![CDATA[External account connect]]></value>
+    </item>
+    <item name="loginxecli_membermenu_title">
+        <value xml:lang="ko"><![CDATA[외부로그인 연동 설정]]></value>
+        <value xml:lang="en"><![CDATA[External account connect setup]]></value>
+    </item>
+    <item name="loginxecli_connected">
+        <value xml:lang="ko"><![CDATA[연결됨]]></value>
+        <value xml:lang="en"><![CDATA[Connected]]></value>
+    </item>
+    <item name="loginxecli_disconnected">
+        <value xml:lang="ko"><![CDATA[연결 안됨]]></value>
+        <value xml:lang="en"><![CDATA[Disconnected]]></value>
+    </item>
 </lang>

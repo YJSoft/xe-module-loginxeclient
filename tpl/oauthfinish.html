@@ -4,6 +4,7 @@
 </script>
 <p>브라우저가 자동으로 이동하지 않을 경우 <a href="{$url}">여기</a>를 클릭</p>
 </block>
+<block cond="$url==''">
 <link rel="stylesheet" href="{$memberskin}/css/member.css" />
 <script src="{$memberskin}/js/member.js"></script>
 <section class="xm">
@@ -48,3 +49,4 @@
 		</div>
 	</form>
 </section>
+</block>
