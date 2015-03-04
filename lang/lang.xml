@@ -7,6 +7,10 @@
 		<value xml:lang="en"><![CDATA[LoginXE Client Module]]></value>
 		<value xml:lang="ko"><![CDATA[로그인 XE 클라이언트 모듈]]></value>
 	</item>
+    <item name="about_loginxeclient_config">
+        <value xml:lang="en"><![CDATA[]]></value>
+        <value xml:lang="ko"><![CDATA[서버 주소에 http://를 붙이셔야 합니다.]]></value>
+    </item>
     <item name="cmd_naverlogin_config">
         <value xml:lang="en"><![CDATA[API Setting]]></value>
         <value xml:lang="ko"><![CDATA[API 설정]]></value>
@@ -27,13 +31,25 @@
         <value xml:lang="en"><![CDATA[Unknown Provider]]></value>
         <value xml:lang="ko"><![CDATA[알 수 없는 제공자]]></value>
     </item>
-    <item name="loginxe_xe_provider">
-        <value xml:lang="en"><![CDATA[XE]]></value>
-        <value xml:lang="ko"><![CDATA[XE]]></value>
+    <item name="loginxe_kakao_provider">
+        <value xml:lang="en"><![CDATA[Kakao]]></value>
+        <value xml:lang="ko"><![CDATA[카카오 계정]]></value>
     </item>
     <item name="loginxe_service">
         <value xml:lang="en"><![CDATA[LoginXE Login Service Provider]]></value>
         <value xml:lang="ko"><![CDATA[로그인XE 로그인 서비스 제공자]]></value>
+    </item>
+    <item name="loginxe_joinenable">
+        <value xml:lang="en"><![CDATA[LoginXE join function]]></value>
+        <value xml:lang="ko"><![CDATA[로그인XE 가입 기능]]></value>
+    </item>
+    <item name="loginxe_enable">
+        <value xml:lang="en"><![CDATA[Enable]]></value>
+        <value xml:lang="ko"><![CDATA[활성화]]></value>
+    </item>
+    <item name="loginxe_disable">
+        <value xml:lang="en"><![CDATA[Disnable]]></value>
+        <value xml:lang="ko"><![CDATA[비활성화]]></value>
     </item>
     <item name="loginxe_id">
         <value xml:lang="en"><![CDATA[LoginXE Server ID]]></value>

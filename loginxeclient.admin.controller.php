@@ -1,25 +1,25 @@
 <?php
 class loginxeclientAdminController extends loginxeclient
 {
-  function init()
-  {
-  }
+	function init()
+	{
+	}
 
-  function procLoginxeclientAdminInsertConfig()
-  {
-    $oModuleController = getController('module');
+	function procLoginxeclientAdminInsertConfig()
+	{
+		$oModuleController = getController('module');
 
-    $config = Context::getRequestVars();
+		$config = Context::getRequestVars();
 
-    if(substr($config->loginxe_server,-1)!='/')
-    {
-      $config->def_url .= '/';
-    }
+		if(substr($config->loginxe_server,-1)!='/')
+		{
+			$config->def_url .= '/';
+		}
 
-    $oModuleController->updateModuleConfig('loginxeclient', $config);
+		$oModuleController->updateModuleConfig('loginxeclient', $config);
 
 
-    $this->setMessage('success_updated');
-    $this->setRedirectUrl(getNotEncodedUrl('', 'module', 'admin', 'act', 'dispLoginxeclientAdminConfig'));
-  }
+		$this->setMessage('success_updated');
+		$this->setRedirectUrl(getNotEncodedUrl('', 'module', 'admin', 'act', 'dispLoginxeclientAdminConfig'));
+	}
 }

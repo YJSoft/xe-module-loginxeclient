@@ -10,7 +10,7 @@
 		{$lang->cmd_naverlogin_config}
 		<a href="#descConfig" class="x_icon-question-sign" data-toggle="#descConfig">{$lang->help}</a>
 	</h1>
-	<p id="descConfig" class="x_alert x_alert-warn">{$lang->about_naverlogin_config}</p>
+	<p id="descConfig" class="x_alert x_alert-warn">{$lang->about_loginxeclient_config}</p>
 	<form method="post" class="x_form-horizontal" action="./">
 		<input type="hidden" name="module" value="loginxeclient">
 		<input type="hidden" name="act" value="procLoginxeclientAdminInsertConfig">
@@ -29,7 +29,14 @@
 			<div class="x_controls">
 				<label class="x_inline"><input type="checkbox" name="loginxe_provider[]" value="naver" checked="checked"|cond="@in_array('naver', $module_config->loginxe_provider)" class="checkbox" /> {$lang->loginxe_naver_provider}</label>
 				<label class="x_inline"><input type="checkbox" name="loginxe_provider[]" value="github" checked="checked"|cond="@in_array('github', $module_config->loginxe_provider)" class="checkbox" /> {$lang->loginxe_github_provider}</label>
-				<!-- label class="x_inline"><input type="checkbox" name="loginxe_provider" value="xe" id="xe" checked="checked"|cond="@in_array('xe', $module_config->loginxe_provider)" class="checkbox" /> {$lang->loginxe_xe_provider}</label -->
+				<!-- label class="x_inline"><input type="checkbox" name="loginxe_provider" value="xe" id="kakao" checked="checked"|cond="@in_array('kakao', $module_config->loginxe_provider)" class="checkbox" /> {$lang->loginxe_kakao_provider}</label -->
+			</div>
+		</div>
+		<div class="x_control-group">
+			<div class="x_control-label">{$lang->loginxe_joinenable}</div>
+			<div class="x_controls">
+				<label class="x_inline"><input type="radio" name="loginxe_joinenable" value="true" checked="checked"|cond="$module_config->loginxe_joinenable == 'true'" class="checkbox" /> {$lang->loginxe_enable}</label>
+				<label class="x_inline"><input type="radio" name="loginxe_joinenable" value="false" checked="checked"|cond="$module_config->loginxe_joinenable == 'false'" class="checkbox" /> {$lang->loginxe_disable}</label>
 			</div>
 		</div>
 		<div class="x_control-group">
