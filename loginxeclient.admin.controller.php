@@ -15,9 +15,9 @@ class loginxeclientAdminController extends loginxeclient
 		{
 			$config->def_url .= '/';
 		}
+		if(!isset($config->loginxe_provider)) $config->loginxe_provider = array('NONE');
 
 		$oModuleController->updateModuleConfig('loginxeclient', $config);
-
 
 		$this->setMessage('success_updated');
 		$this->setRedirectUrl(getNotEncodedUrl('', 'module', 'admin', 'act', 'dispLoginxeclientAdminConfig'));

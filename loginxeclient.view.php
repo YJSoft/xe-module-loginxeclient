@@ -9,6 +9,11 @@ class loginxeclientView extends loginxeclient
 
 	function dispLoginxeclientListProvider()
 	{
+		$oLoginXEServerModel = getModel('loginxeclient');
+		$module_config = $oLoginXEServerModel->getConfig();
+
+		Context::set('module_config', $module_config);
+
 		$oMemberModel = getModel('member');
 		$oMemberConfig = $oMemberModel->getMemberConfig();
 		$skin = $oMemberConfig->skin;

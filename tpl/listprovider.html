@@ -12,10 +12,15 @@
 		<p>{$XE_VALIDATOR_MESSAGE}</p>
 	</div>
 	<dl class="dl-horizontal">
-		<block loop="$providers => $item">
+		<block loop="$providers => $item" cond="@in_array($item->id, $module_config->loginxe_provider)">
 			<dt>{$item->title}</dt>
 			<dd cond="$item->connected"><a href="{getUrl('','module','loginxeclient','act','dispLoginxeclientRevokeProvider','provider',$item->id)}">{$lang->loginxecli_connected}</a></dd>
 			<dd cond="!$item->connected"><a href="{getUrl('','module','loginxeclient','act','dispLoginxeclientOAuth','provider',$item->id)}">{$lang->loginxecli_disconnected}</a></dd>
+		</block>
+
+		<block cond="@in_array('NONE', $module_config->loginxe_provider)">
+			<dt style="color:#ccc">&hellip;</dt>
+			<dd>{$lang->loginxecli_noprovider}</dd>
 		</block>
 	</dl>
 	<!-- div class="btnArea btn-group" cond="$memberInfo['member_srl'] == $logged_info->member_srl">

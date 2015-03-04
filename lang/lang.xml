@@ -119,4 +119,8 @@
         <value xml:lang="ko"><![CDATA[연결 안됨]]></value>
         <value xml:lang="en"><![CDATA[Disconnected]]></value>
     </item>
+    <item name="loginxecli_noprovider">
+        <value xml:lang="ko"><![CDATA[활성화된 Provider가 없습니다.]]></value>
+        <value xml:lang="en"><![CDATA[No provider is actived.]]></value>
+    </item>
 </lang>
