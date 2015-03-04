@@ -414,6 +414,7 @@ class loginxeclientView extends loginxeclient
 	function _doLoginXEJoin($func_arg)
 	{
 		$oMemberModel = getModel('member');
+		$config = $oMemberModel->getMemberConfig();
 		$oMemberController = getController('member');
 		$oLoginXEServerModel = getModel('loginxeclient');
 		$module_config = $oLoginXEServerModel->getConfig();
