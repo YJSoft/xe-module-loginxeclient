@@ -4,12 +4,14 @@
 	<permissions />
 	<actions>
 		<action name="dispLoginxeclientAdminConfig" type="view" menu_name="Loginxeclient" menu_index="true" admin_index="true" />
-		<action name="dispLoginxeclientOAuth" type="view"/>
+        <action name="dispLoginxeclientOAuth" type="view"/>
 		<action name="dispLoginxeclientListProvider" type="view"/>
 		<action name="dispLoginxeclientRevokeProvider" type="view" />
 		<action name="dispLoginxeclientOAuthFinish" type="view" />
+        <action name="procLoginxeclientOAuthJoin" type="controller" ruleset="insertLoginXEMember" />
 		<action name="triggerDeleteLoginxeclientMember" type="controller" />
 		<action name="triggerLoginxeclientAddMemberMenu" type="controller" />
+        <action name="triggerDisablePWChk" type="controller" />
 		<action name="procLoginxeclientAdminInsertConfig" type="controller" standalone="false" />
 	</actions>
 	<menus>
