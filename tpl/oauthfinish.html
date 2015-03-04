@@ -29,6 +29,9 @@
 				</label>
 			</div>
 		</div>
+		<block cond="$member_config->agreement==''">
+		<input type="hidden" name="accept_loginxe_agreement" value="Y" id="accept_agree" />
+		</block>
 		<div class="control-group">
 			<label for="password" class="control-label"><em style="color:red">*</em> {$lang->password}</label>
 			<div class="controls">
