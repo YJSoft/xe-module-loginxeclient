@@ -75,8 +75,6 @@ class loginxeclientView extends loginxeclient
 
 	function dispLoginxeclientOAuthFinish()
 	{
-		if(Context::get('token')=='') return new Object(-1,'No token given.');
-
 		$oMemberModel = getModel('member');
 		$config = $oMemberModel->getMemberConfig();
 		Context::set('member_config',$config);
@@ -107,6 +105,10 @@ class loginxeclientView extends loginxeclient
 		$oMemberController = getController('member');
 		$oLoginXEServerModel = getModel('loginxeclient');
 		$module_config = $oLoginXEServerModel->getConfig();
+
+		//use_sessiondata가 true면 로그인 서버에 다시 요청하지 않음(key 만료로 인한 오류 방지)
+		if(Context::get('use_sessiondata')=='true') return;
+		if(Context::get('token')=='') return new Object(-1,'No token given.');
 
 		$token = rawurldecode(Context::get('token'));
 		if($token=='') return new Object(-1,'No token given.');

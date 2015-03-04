@@ -196,7 +196,8 @@ class loginxeclientController extends loginxeclient
 		else $this->redirect_Url = getNotEncodedUrl('', 'act', 'dispMemberModifyInfo');
 
 		FileHandler::removeFile($tmp_file);
+		unset($_SESSION['loginxetemp_joindata']);
 
-		return;
+		return new Object();
 	}
 }
