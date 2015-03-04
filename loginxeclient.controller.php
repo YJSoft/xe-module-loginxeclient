@@ -32,4 +32,18 @@ class loginxeclientController extends loginxeclient
 
 		return new Object();
 	}
+
+	function triggerDisablePWChk($args)
+	{
+		$cond = new stdClass();
+		$cond->srl = $args->member_srl;
+		$cond->type = 'naver';
+		$output = executeQuery('loginxeclient.getLoginxeclientMemberbySrl', $cond);
+		if(isset($output->data->enc_id)) $_SESSION['rechecked_password_step'] = 'INPUT_DATA';
+
+		$cond->type = 'github';
+		$output = executeQuery('loginxeclient.getLoginxeclientMemberbySrl', $cond);
+		if(isset($output->data->enc_id)) $_SESSION['rechecked_password_step'] = 'INPUT_DATA';
+		return;
+	}
 }

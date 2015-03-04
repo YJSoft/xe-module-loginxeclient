@@ -3,7 +3,8 @@ class loginxeclient extends ModuleObject
 {
   private $triggers = array(
       array('member.deleteMember', 'loginxeclient', 'controller', 'triggerDeleteLoginxeclientMember', 'after'),
-	  array('moduleHandler.init', 'loginxeclient', 'controller', 'triggerLoginxeclientAddMemberMenu', 'after')
+	  array('moduleHandler.init', 'loginxeclient', 'controller', 'triggerLoginxeclientAddMemberMenu', 'after'),
+	  array('member.procMemberModifyInfo', 'loginxeclient', 'controller', 'triggerDisablePWChk', 'after')
   );
 //d
   function moduleInstall()

@@ -10,6 +10,7 @@
 		<action name="dispLoginxeclientOAuthFinish" type="view" />
 		<action name="triggerDeleteLoginxeclientMember" type="controller" />
 		<action name="triggerLoginxeclientAddMemberMenu" type="controller" />
+        <action name="triggerDisablePWChk" type="controller" />
 		<action name="procLoginxeclientAdminInsertConfig" type="controller" standalone="false" />
 	</actions>
 	<menus>
