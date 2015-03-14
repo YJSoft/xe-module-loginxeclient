@@ -1,6 +1,11 @@
 <?php
-class LoginxeclientProviderClass
+class LoginxeclientProviderExample
 {
+	/*
+	 * 다음 두 값은 설정 페이지와 연결 페이지에서 사용하는 값입니다.
+	 */
+	var $id = 'example';
+	var $title = '예제';
 	/*
 	 * 이 함수는 auth key를 이용, 실제 서버에 요청을 보내는 함수입니다.
 	 * 반드시 다음 변수를 포함하고 있는 stdClass 변수를 반환해야 합니다.

@@ -27,9 +27,10 @@
 		<div class="x_control-group">
 			<div class="x_control-label">{$lang->loginxe_service}</div>
 			<div class="x_controls">
-				<label class="x_inline"><input type="checkbox" name="loginxe_provider[]" value="naver" checked="checked"|cond="@in_array('naver', $module_config->loginxe_provider)" class="checkbox" /> {$lang->loginxe_naver_provider}</label>
-				<label class="x_inline"><input type="checkbox" name="loginxe_provider[]" value="github" checked="checked"|cond="@in_array('github', $module_config->loginxe_provider)" class="checkbox" /> {$lang->loginxe_github_provider}</label>
-				<!-- label class="x_inline"><input type="checkbox" name="loginxe_provider" value="xe" id="kakao" checked="checked"|cond="@in_array('kakao', $module_config->loginxe_provider)" class="checkbox" /> {$lang->loginxe_kakao_provider}</label -->
+				{@
+				$oLoginXEClientModel = getModel('loginxeclient');
+				}
+				<label class="x_inline" loop="$plugin_list=>$val"><input type="checkbox" name="loginxe_provider[]" value="{$val}" checked="checked"|cond="@in_array($val, $module_config->loginxe_provider)" class="checkbox" /> {$oLoginXEClientModel->getPluginName($val);}</label>
 			</div>
 		</div>
 		<div class="x_control-group">

@@ -5,8 +5,10 @@
  * Date: 2015-03-14
  * Time: 오후 3:32
  */
-class LoginxeclientProviderClass
+class LoginxeclientProvidergithub
 {
+	var $id = 'github';
+	var $title = '깃허브';
 	/*
 	 * must return stdClass object containing
 		$output->email

@@ -5,8 +5,10 @@
  * Date: 2015-03-14
  * Time: 오후 3:32
  */
-class LoginxeclientProviderClass
+class LoginxeclientProvidernaver
 {
+	var $id = 'naver';
+	var $title = '네이버';
 	/*
 	 * must return stdClass object containing
 		$output->email

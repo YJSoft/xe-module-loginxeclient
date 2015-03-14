@@ -9,8 +9,8 @@ class loginxeclientView extends loginxeclient
 
 	function dispLoginxeclientListProvider()
 	{
-		$oLoginXEServerModel = getModel('loginxeclient');
-		$module_config = $oLoginXEServerModel->getConfig();
+		$oLoginXEClientModel = getModel('loginxeclient');
+		$module_config = $oLoginXEClientModel->getConfig();
 
 		Context::set('module_config', $module_config);
 
@@ -39,36 +39,23 @@ class loginxeclientView extends loginxeclient
 
 		Context::set('memberskin',$template_path);
 
-		$logindata = new stdClass();
-		$logindata->naver = new stdClass();
-		$logindata->naver->id = 'naver';
-		$logindata->naver->title = Context::getLang('loginxe_naver_provider');
-		$logindata->naver->connected = false;
-		$logindata->github = new stdClass();
-		$logindata->github->id = 'github';
-		$logindata->github->title = Context::getLang('loginxe_github_provider');
-		$logindata->github->connected = false;
+		$list = $oLoginXEClientModel->getPluginList();
+		$logindata = $oLoginXEClientModel->getPluginData($list);
 
-		$cond = new stdClass();
-		$cond->srl=Context::get('logged_info')->member_srl;
-		$cond->type='naver';
-		$output = executeQuery('loginxeclient.getLoginxeclientMemberbySrl', $cond);
-
-		if(isset($output->data->enc_id))
+		foreach($list as $service)
 		{
-			$logindata->naver->connected = true;
+			$cond = new stdClass();
+			$cond->srl=Context::get('logged_info')->member_srl;
+			$cond->type=$service;
+			$output = executeQuery('loginxeclient.getLoginxeclientMemberbySrl', $cond);
+
+			if(isset($output->data->enc_id))
+			{
+				$logindata->{$service}->connected = true;
+			}
 		}
 
-		$cond = new stdClass();
-		$cond->srl=Context::get('logged_info')->member_srl;
-		$cond->type='github';
-		$output = executeQuery('loginxeclient.getLoginxeclientMemberbySrl', $cond);
-
-		if(isset($output->data->enc_id))
-		{
-			$logindata->github->connected = true;
-		}
-
+		debugPrint($logindata);
 		Context::set('providers',$logindata);
 	}
 
@@ -134,9 +121,11 @@ class loginxeclientView extends loginxeclient
 
 		$plugin_path = sprintf('%splugins/%s.plugin.php', $this->module_path,str_replace('/','',$service));
 		require($plugin_path);
-		if(!class_exists('LoginxeclientProviderClass')) return new Object(-1,'msg_invalid_request');
+		if(!class_exists('LoginxeclientProvider' . $service)) return new Object(-1,'msg_invalid_request');
 
-		$oauth_value = LoginxeclientProviderClass::sendOAuthRequest($token,$state,$service);
+		$class = 'LoginxeclientProvider' . $service;
+		$instance = new $class();
+		$oauth_value = $instance->sendOAuthRequest($token,$state,$service);
 		if($oauth_value->error!=0) return new Object($oauth_value->error,$oauth_value->message);
 
 		//이후 처리는 2가지로 분기함
