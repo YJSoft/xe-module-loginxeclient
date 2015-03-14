@@ -30,7 +30,7 @@
 				{@
 				$oLoginXEClientModel = getModel('loginxeclient');
 				}
-				<label class="x_inline" loop="$plugin_list=>$val"><input type="checkbox" name="loginxe_provider[]" value="{$val}" checked="checked"|cond="@in_array($val, $module_config->loginxe_provider)" class="checkbox" /> {$oLoginXEClientModel->getPluginName($val);}</label>
+				<label class="x_inline" loop="$plugin_list=>$val"><input type="checkbox" name="loginxe_provider[]" value="{$val}" checked="checked"|cond="@in_array($val, $module_config->loginxe_provider)" class="checkbox" /> {$oLoginXEClientModel->getPluginName($val,$plugin_data);}</label>
 			</div>
 		</div>
 		<div class="x_control-group">

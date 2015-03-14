@@ -23,16 +23,9 @@ class loginxeclientModel extends loginxeclient
 		return $plugins;
 	}
 
-	function getPluginName($service)
+	function getPluginName($service,$plugin_data)
 	{
-		$plugin_path = sprintf('%splugins/%s.plugin.php', $this->module_path, $service);
-		require_once($plugin_path);
-		if(!class_exists('LoginxeclientProvider' . $service)) return '';
-
-		$class = 'LoginxeclientProvider' . $service;
-		$instance = new $class();
-
-		return $instance->title;
+		return $plugin_data->{$service}->title;
 	}
 
 	function getPluginData($list)
@@ -51,6 +44,8 @@ class loginxeclientModel extends loginxeclient
 			$logindata->{$service}->id = $instance->id;
 			$logindata->{$service}->title = $instance->title;
 			$logindata->{$service}->connected = FALSE;
+
+			unset($instance);
 		}
 
 		return $logindata;
