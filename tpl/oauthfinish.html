@@ -1,5 +1,56 @@
+<block cond="$url!=''">
 <script>
 	location.href='{$url}';
 </script>
-<p>인증 완료.</p>
 <p>브라우저가 자동으로 이동하지 않을 경우 <a href="{$url}">여기</a>를 클릭</p>
+</block>
+<block cond="$url==''">
+<link rel="stylesheet" href="{$memberskin}/css/member.css" />
+<script src="{$memberskin}/js/member.js"></script>
+<section class="xm">
+	<h1 style="border-bottom:1px solid #ccc">{$lang->cmd_loginxesignup}</h1>
+	<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/loginxe/tpl/oauthfinish/1'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+		<p>{$XE_VALIDATOR_MESSAGE}</p>
+	</div>
+
+	<form ruleset="insertLoginXEMember" id="fo_insert_member" action="./" method="post" enctype="multipart/form-data" class="form-horizontal">
+		<input type="hidden" name="act" value="procLoginxeclientOAuthJoin" />
+		<input type="hidden" name="xe_validator_id" value="modules/loginxe/tpl/oauthfinish/1" />
+		<input type="hidden" name="error_return_url" value="{getUrl('','act','dispLoginxeclientOAuthFinish','use_sessiondata','true')}" />
+		<input type="hidden" name="success_return_url" value="{getUrl('act','dispMemberModifyInfo')}" />
+
+		<div class="agreement" cond="$member_config->agreement">
+			<div class="text">
+				{$member_config->agreement}
+			</div>
+			<div class="confirm">
+				<label for="accept_agree">
+					<input type="checkbox" name="accept_loginxe_agreement" value="Y" id="accept_agree" />
+					{$lang->about_loginxe_accept_agreement}
+				</label>
+			</div>
+		</div>
+		<block cond="$member_config->agreement==''">
+		<input type="hidden" name="accept_loginxe_agreement" value="Y" id="accept_agree" />
+		</block>
+		<div class="control-group">
+			<label for="password" class="control-label"><em style="color:red">*</em> {$lang->password}</label>
+			<div class="controls">
+				<input type="password" name="password" id="password" value="" required />
+				<p class="help-inline">{$lang->about_password_strength[$member_config->password_strength]}</p>
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="password2" class="control-label"><em style="color:red">*</em> {$lang->password3}</label>
+			<div class="controls">
+				<input type="password" name="password2" id="password2" value="" required />
+			</div>
+		</div>
+
+		<div class="btnArea" style="border-top:1px solid #ccc;padding-top:10px">
+			<input type="submit" value="{$lang->cmd_registration}" class="btn btn-inverse pull-right" />
+			<a href="{getUrl('')}" class="btn pull-left">{$lang->cmd_cancel}</a>
+		</div>
+	</form>
+</section>
+</block>
