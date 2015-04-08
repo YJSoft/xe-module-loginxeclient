@@ -9,7 +9,7 @@
 	</item>
     <item name="about_loginxeclient_config">
         <value xml:lang="en"><![CDATA[]]></value>
-        <value xml:lang="ko"><![CDATA[서버 주소에 http://를 붙이셔야 합니다.]]></value>
+        <value xml:lang="ko"><![CDATA[로그인XE 클라이언트 모듈의 설정 페이지입니다.]]></value>
     </item>
     <item name="cmd_naverlogin_config">
         <value xml:lang="en"><![CDATA[API Setting]]></value>

@@ -10,7 +10,7 @@
 		{$lang->cmd_naverlogin_config}
 		<a href="#descConfig" class="x_icon-question-sign" data-toggle="#descConfig">{$lang->help}</a>
 	</h1>
-	<p id="descConfig" class="x_alert x_alert-warn">{$lang->about_loginxeclient_config}</p>
+	<p id="descConfig" hidden="hidden" class="x_alert x_alert-info">{$lang->about_loginxeclient_config}</p>
 	<form method="post" class="x_form-horizontal" action="./">
 		<input type="hidden" name="module" value="loginxeclient">
 		<input type="hidden" name="act" value="procLoginxeclientAdminInsertConfig">
@@ -20,7 +20,11 @@
 			<div class="x_control-label">{$lang->loginxe_server}</div>
 			<div class="x_controls">
 				<div class="x_input">
-					<input type="text" step="any" value="{$module_config->loginxe_server}" name="loginxe_server" size="7">
+					<input type="hidden" id="chkDomain" />
+					<input type="text" step="any" value="{$module_config->loginxe_server}" name="loginxe_server" id="loginxe_server_address" size="7" onblur="if(jQuery('#chkDomain').val()!=this.value)jQuery.exec_json('loginxeclient.dispLoginxeclientGetVersion', {/**/'loginxe_server':this.value/**/}, chkServerVersion);jQuery('#chkDomain').val(this.value);">
+					<a href="#about_domains" clsss="x_icon-question-sign" data-toggle="toggle">{$lang->help}</a>
+					<p id="version_info"></p>
+					<p id="about_domains" class="x_help-block" hidden="hidden">요청을 보낼 로그인XE 서버 모듈이 설치된 주소를 입력해주세요. 도메인 앞 http://를 붙이셔야 합니다. 서버에서 보안 연결을 지원하는 경우 https:// 를 붙여 보안 접속이 가능하며 주소 맨 뒤 /는 생략하셔도 됩니다.</p>
 				</div>
 			</div>
 		</div>
@@ -64,6 +68,9 @@
 		</div>
 	</form>
 </section>
-
+<script>
+	var address = jQuery('#loginxe_server_address').val();
+	if(address!='') jQuery.exec_json('loginxeclient.dispLoginxeclientGetVersion', {/**/'loginxe_server':address/**/}, chkServerVersion);jQuery('#chkDomain').val(address);
+</script>
 <!--// FOOTER -->
 <include target="./_footer.html" />

@@ -7,6 +7,35 @@ class loginxeclientView extends loginxeclient
 		$this->setTemplateFile(strtolower(str_replace('dispLoginxeclient', '', $this->act)));
 	}
 
+	function dispLoginxeclientGetVersion()
+	{
+		Context::setRequestMethod('JSON'); // 요청을 JSON 형태로
+		Context::setResponseMethod('JSON'); // 응답을 JSON 형태로
+
+		$ping_url = sprintf(Context::get('loginxe_server') . '/index.php?module=loginxeserver&act=dispLoginxeserverGetServerProtocolVersion');
+		$ping_header = array();
+		$ping_header['Host'] = parse_url(Context::get('loginxe_server'),PHP_URL_HOST);
+		$ping_header['Pragma'] = 'no-cache';
+		$ping_header['Accept'] = '*/*';
+		//bypass gzip bug by setting Accept-Encoding header to blank
+		$ping_header['Accept-Encoding'] = '';
+
+		$request_config = array();
+		$request_config['ssl_verify_peer'] = false;
+
+		$buff = FileHandler::getRemoteResource($ping_url, null, 10, 'POST', 'application/x-www-form-urlencoded', $ping_header, array(), array(), $request_config);
+		$data = json_decode($buff);
+
+		//if error occured
+		if($data->error!=0)
+		{
+			return new Object($data->error,$data->message);
+		}
+
+		//set token
+		$this->add('version', $data->version);
+	}
+
 	function dispLoginxeclientListProvider()
 	{
 		$oLoginXEClientModel = getModel('loginxeclient');
@@ -94,12 +123,40 @@ class loginxeclientView extends loginxeclient
 
 		//use_sessiondata가 true면 로그인 서버에 다시 요청하지 않음(key 만료로 인한 오류 방지)
 		if(Context::get('use_sessiondata')=='true') return;
-		if(Context::get('token')=='') return new Object(-1,'No token given.');
+		$access_token = Context::get('access_token');
+		//if token exists, that means server's protocol version is 1.0
+		$token = Context::get('token');
+		if($access_token=='') return new Object(-1,'No token given.');
 
-		$token = rawurldecode(Context::get('token'));
-		if($token=='') return new Object(-1,'No token given.');
 		$state = Context::get('state');
 		$service = Context::get('provider');
+
+		//version 1.1(must get token before continue)
+		if($token=='')
+		{
+			$ping_url = sprintf($module_config->loginxe_server . '/index.php?module=loginxeserver&act=dispLoginxeserverGetAuthKey&provider=%s&state=%s&code=%s',$service,$state,$access_token);
+			$ping_header = array();
+			$ping_header['Host'] = parse_url($module_config->loginxe_server,PHP_URL_HOST);
+			$ping_header['Pragma'] = 'no-cache';
+			$ping_header['Accept'] = '*/*';
+			//bypass gzip bug by setting Accept-Encoding header to blank
+			$ping_header['Accept-Encoding'] = '';
+
+			$request_config = array();
+			$request_config['ssl_verify_peer'] = false;
+
+			$buff = FileHandler::getRemoteResource($ping_url, null, 10, 'POST', 'application/x-www-form-urlencoded', $ping_header, array(), array(), $request_config);
+			$data = json_decode($buff);
+
+			//if error occured
+			if($data->error!=0)
+			{
+				return new Object($data->error,$data->message);
+			}
+
+			//set token
+			$token = $data->access_token;
+		}
 
 		//SSL 미지원시 리턴
 		if(!$this->checkOpenSSLSupport())
@@ -224,7 +281,7 @@ class loginxeclientView extends loginxeclient
 		$_SESSION['loginxecli_state'] = $this->generate_state();
 
 		//서버 주소로 이동
-		Context::set('url',$module_config->loginxe_server . sprintf("/index.php?module=loginxeserver&act=dispLoginxeserverOAuth&provider=%s&id=%s&key=%s&state=%s&callback=%s",$service,$module_config->loginxe_id,$module_config->loginxe_key,$_SESSION['loginxecli_state'],urlencode(getNotEncodedFullUrl('','act','dispLoginxeclientOAuthFinish','provider',$service))));
+		Context::set('url',$module_config->loginxe_server . sprintf("/index.php?module=loginxeserver&act=dispLoginxeserverOAuth&provider=%s&id=%s&key=%s&state=%s&callback=%s&version=%s",$service,$module_config->loginxe_id,$module_config->loginxe_key,$_SESSION['loginxecli_state'],urlencode(getNotEncodedFullUrl('','act','dispLoginxeclientOAuthFinish','provider',$service)),$this->LOGINXE_SERVER_PROTOCOL));
 	}
 
 	function dispLoginxeclientRevokeProvider()
